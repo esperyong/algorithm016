@@ -1,5 +1,7 @@
 package algorithm016.hash;
 
+import java.util.Arrays;
+
 /**
  * 有效的字母异位词
  * 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
@@ -25,7 +27,33 @@ package algorithm016.hash;
 
 public class ValidAnagram {
 	
-    public boolean isAnagram(String s, String t) {
+    public boolean isAnagram1(String s, String t) {
+        char[] ss = s.toCharArray();
+        char[] tt = t.toCharArray();
+        Arrays.sort(ss);
+        Arrays.sort(tt);
+    	return Arrays.equals(ss, tt);
+    }	
+
+    public boolean isAnagram2(String s, String t) {
+    	/**
+    	 * https://liuwanping.github.io/2018/10/31/Java%E4%B8%ADchar%EF%BC%8Cint%EF%BC%8CString%E7%9A%84%E7%9B%B8%E5%8A%A0%E5%87%8F/
+    	 */
+    	if(s.length() != t.length()) {
+    	    return false;
+    	}
+    	
+    	int[] counter = new int[26];
+    	
+    	for (int i = 0; i < s.length(); i++) {
+    		counter[s.charAt(i) - 'a']++;
+    		counter[t.charAt(i) - 'a']--;
+		}
+        for (int i = 0; i < counter.length; i++) {
+        	if(counter[i] != 0) {
+        		return false;
+        	}
+		}	
     	return true;
     }	
 
