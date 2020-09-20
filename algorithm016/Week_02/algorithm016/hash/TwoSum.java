@@ -24,6 +24,10 @@ public class TwoSum {
 		return null;
 
 	}
+
+	public int[] twoSum2(int[] nums, int target) {
+        
+	}
 	
 	public static void main(String[] args) {
 
